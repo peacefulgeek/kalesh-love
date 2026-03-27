@@ -1,10 +1,11 @@
 /*
  * KALESH.LOVE — Books Page
- * 7 book cards: cover image, title, one-line description, "Learn More" link.
- * Measured tone. Cool white background.
+ * "The Sacred Glow" — Devotional Luminism
+ * Warm hero with lotus image, golden-accented book cards.
  */
 
 import { useEffect, useRef, useState } from "react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,6 +22,8 @@ function useInView(threshold = 0.1) {
   }, [threshold]);
   return { ref, visible };
 }
+
+const HERO_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/lotus-golden-water-oP2AnZKKEU4KmZV54odWd9.webp';
 
 const books = [
   {
@@ -67,137 +70,189 @@ function BookCard({ title, description, link, index }: {
   index: number;
 }) {
   const card = useInView();
+  const [hovered, setHovered] = useState(false);
 
   return (
     <div
       ref={card.ref}
       style={{
-        paddingBottom: '2.5rem',
-        marginBottom: '2.5rem',
-        borderBottom: '1px solid #E0E0E0',
         opacity: card.visible ? 1 : 0,
-        transform: card.visible ? 'translateY(0)' : 'translateY(8px)',
-        transition: `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`,
+        transform: card.visible ? 'translateY(0)' : 'translateY(12px)',
+        transition: `opacity 0.6s ease ${index * 0.06}s, transform 0.6s ease ${index * 0.06}s`,
       }}
     >
-      <h3
-        style={{
-          fontFamily: "var(--font-serif)",
-          fontSize: 'clamp(20px, 4vw, 26px)',
-          fontWeight: 400,
-          color: '#1A1A2E',
-          marginBottom: '0.75rem',
-          lineHeight: 1.3,
-        }}
-      >
-        {title}
-      </h3>
-      <p
-        style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: '16px',
-          color: '#5B6B7D',
-          lineHeight: 1.65,
-          marginBottom: '1rem',
-        }}
-      >
-        {description}
-      </p>
       <a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: '13px',
-          letterSpacing: '0.05em',
-          textTransform: 'uppercase' as const,
-          color: '#5B6B7D',
-          textDecoration: 'none',
-          borderBottom: '1px solid #E0E0E0',
-          paddingBottom: '2px',
-          transition: 'border-color 0.3s ease',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.borderBottomColor = '#5B6B7D')}
-        onMouseLeave={(e) => (e.currentTarget.style.borderBottomColor = '#E0E0E0')}
+        style={{ textDecoration: 'none', display: 'block' }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
-        Learn more
+        <div
+          className="warm-card"
+          style={{
+            padding: '2rem 2.25rem',
+            marginBottom: '1.25rem',
+            background: hovered ? 'rgba(200, 149, 108, 0.06)' : 'var(--cream)',
+            transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
+            {/* Book number */}
+            <span
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: '36px',
+                fontWeight: 300,
+                color: 'var(--gold-light)',
+                lineHeight: 1,
+                minWidth: '36px',
+                marginTop: '4px',
+              }}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div style={{ flex: 1 }}>
+              <h3
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 'clamp(20px, 3vw, 26px)',
+                  fontWeight: 500,
+                  color: hovered ? 'var(--gold-dark)' : 'var(--earth)',
+                  marginBottom: '0.5rem',
+                  lineHeight: 1.3,
+                  transition: 'color 0.4s ease',
+                }}
+              >
+                {title}
+              </h3>
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: '15px',
+                  color: 'var(--earth-medium)',
+                  lineHeight: 1.65,
+                  marginBottom: '0.75rem',
+                }}
+              >
+                {description}
+              </p>
+              <span
+                style={{
+                  fontFamily: "var(--font-accent)",
+                  fontSize: '13px',
+                  letterSpacing: '0.06em',
+                  color: 'var(--gold)',
+                  transition: 'color 0.3s',
+                }}
+              >
+                Learn more &rarr;
+              </span>
+            </div>
+          </div>
+        </div>
       </a>
     </div>
   );
 }
 
 export default function Books() {
-  const hero = useInView();
-  const img = useInView();
+  usePageMeta({
+    title: 'Books — Kalesh',
+    description: 'Seven published works on awareness, karma, healing, and the architecture of the self. Two decades of contemplative inquiry.',
+    ogImage: HERO_IMAGE,
+    ogUrl: 'https://kalesh.love/books',
+  });
 
   return (
     <div>
-      {/* Page title */}
+      {/* Hero */}
       <section
-        ref={hero.ref}
-        className="reading-column"
         style={{
-          paddingTop: '2rem',
-          paddingBottom: '3rem',
-          opacity: hero.visible ? 1 : 0,
-          transform: hero.visible ? 'translateY(0)' : 'translateY(8px)',
-          transition: 'opacity 0.6s ease, transform 0.6s ease',
+          position: 'relative',
+          height: '50vh',
+          minHeight: '350px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
         }}
       >
-        <h1
+        <div style={{ position: 'absolute', inset: 0 }}>
+          <img
+            src={HERO_IMAGE}
+            alt=""
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to bottom, rgba(26, 21, 32, 0.35), rgba(26, 21, 32, 0.6))',
+            }}
+          />
+        </div>
+        <div style={{ position: 'relative', zIndex: 10, textAlign: 'center', padding: '2rem 1.5rem' }}>
+          <h1
+            className="fade-in-up"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 'clamp(36px, 8vw, 56px)',
+              fontWeight: 500,
+              color: 'var(--cream)',
+              marginBottom: '0.75rem',
+              textShadow: '0 2px 30px rgba(0,0,0,0.3)',
+            }}
+          >
+            Books
+          </h1>
+          <p
+            className="fade-in-up delay-200"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontStyle: 'italic',
+              fontSize: 'clamp(15px, 2vw, 18px)',
+              color: 'rgba(253, 248, 240, 0.8)',
+              maxWidth: '480px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              lineHeight: 1.6,
+            }}
+          >
+            Two decades of inquiry into consciousness, healing, and the human condition.
+          </p>
+        </div>
+      </section>
+
+      {/* Book cards */}
+      <section
+        style={{
+          maxWidth: '740px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          padding: 'clamp(2rem, 4vw, 4rem) 1.25rem clamp(4rem, 6vw, 6rem)',
+        }}
+      >
+        <div
           style={{
-            fontFamily: "var(--font-serif)",
-            fontSize: 'clamp(32px, 6vw, 48px)',
-            fontWeight: 400,
-            color: '#1A1A2E',
-            marginBottom: '1rem',
-          }}
-        >
-          Books
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: '18px',
-            color: '#5B6B7D',
-            lineHeight: 1.7,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             marginBottom: '2rem',
           }}
         >
-          These works span two decades of inquiry into consciousness, healing, and the human condition.
-        </p>
-        <hr className="manuscript-rule" />
-      </section>
+          <span className="meta-text">{books.length} Published Works</span>
+          <div
+            style={{
+              flex: 1,
+              height: '1px',
+              background: 'linear-gradient(90deg, transparent, var(--gold-light), transparent)',
+              marginLeft: '1.5rem',
+            }}
+          />
+        </div>
 
-      {/* Atmospheric image */}
-      <div
-        ref={img.ref}
-        className="reading-column"
-        style={{
-          marginBottom: '3rem',
-          opacity: img.visible ? 1 : 0,
-          transition: 'opacity 0.8s ease',
-        }}
-      >
-        <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/morning-light-book-cRw2drxcyNtrCiiroTPsye.webp"
-          alt="Morning light on an open book"
-          style={{
-            width: '100%',
-            maxWidth: '500px',
-            height: 'auto',
-            filter: 'grayscale(100%) contrast(1.05)',
-          }}
-          loading="lazy"
-        />
-      </div>
-
-      {/* Book list */}
-      <section
-        className="reading-column"
-        style={{ paddingBottom: '4rem' }}
-      >
         {books.map((book, i) => (
           <BookCard
             key={book.title}

@@ -1,13 +1,13 @@
 /*
  * KALESH.LOVE — Article Page
- * 660px reading column. Pull quotes in IBM Plex Serif italic
- * with slate blue left border. Reading time and date in Plex Mono.
- * Generous paragraph spacing. No drop-cap.
+ * "The Sacred Glow" — Devotional Luminism
+ * Warm reading experience with golden accents, pull quotes, and prev/next navigation.
  */
 
 import { useParams, Link, Redirect } from "wouter";
 import { getArticleBySlug, articles } from "@/lib/articles";
 import { useEffect, useRef, useState } from "react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,7 +29,6 @@ function renderBody(body: string) {
   const paragraphs = body.split('\n\n').filter(p => p.trim());
   return paragraphs.map((p, i) => {
     const trimmed = p.trim();
-    // Pull quote
     if (trimmed.startsWith('>>')) {
       const quoteText = trimmed.replace(/^>>?\s*/, '');
       return (
@@ -39,16 +38,24 @@ function renderBody(body: string) {
       );
     }
     return (
-      <p key={i} style={{ fontFamily: "var(--font-sans)", lineHeight: 1.75 }}>
-        {trimmed}
-      </p>
+      <p key={i}>{trimmed}</p>
     );
   });
 }
 
+const ARTICLE_OG_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/sacred-book-candlelight-JFxC9ZXa3SsactezK2R4fx.webp';
+
 export default function ArticlePage() {
   const params = useParams<{ slug: string }>();
   const article = getArticleBySlug(params.slug || '');
+
+  usePageMeta({
+    title: article ? `${article.title} — Kalesh` : 'Article — Kalesh',
+    description: article ? article.subtitle : 'An essay on consciousness and contemplative practice.',
+    ogImage: ARTICLE_OG_IMAGE,
+    ogUrl: article ? `https://kalesh.love/writing/${article.slug}` : 'https://kalesh.love/writing',
+  });
+
   const hero = useInView();
   const content = useInView();
 
@@ -62,52 +69,99 @@ export default function ArticlePage() {
     day: 'numeric',
   });
 
-  // Find adjacent articles for navigation
   const currentIndex = articles.findIndex(a => a.slug === article.slug);
   const prevArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
   const nextArticle = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
 
   return (
     <div>
-      {/* Article header */}
+      {/* Article header — warm cream background with golden accents */}
       <section
-        ref={hero.ref}
-        className="reading-column"
         style={{
-          paddingTop: '2rem',
-          paddingBottom: '3rem',
-          opacity: hero.visible ? 1 : 0,
-          transform: hero.visible ? 'translateY(0)' : 'translateY(8px)',
-          transition: 'opacity 0.6s ease, transform 0.6s ease',
+          background: 'linear-gradient(to bottom, var(--cream-deep), var(--cream))',
+          padding: 'clamp(3rem, 6vw, 5rem) 1.25rem clamp(2rem, 4vw, 3rem)',
         }}
       >
-        <div className="meta-text" style={{ marginBottom: '1.5rem', fontSize: '12px' }}>
-          {formattedDate} — {article.readingTime} min read
+        <div
+          ref={hero.ref}
+          style={{
+            maxWidth: '680px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            opacity: hero.visible ? 1 : 0,
+            transform: hero.visible ? 'translateY(0)' : 'translateY(12px)',
+            transition: 'opacity 0.7s ease, transform 0.7s ease',
+          }}
+        >
+          {/* Back to writing */}
+          <Link
+            href="/writing"
+            style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: '13px',
+              letterSpacing: '0.06em',
+              color: 'var(--gold)',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              marginBottom: '2rem',
+              transition: 'color 0.3s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold-dark)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gold)')}
+          >
+            <span style={{ fontSize: '16px' }}>&larr;</span> All Essays
+          </Link>
+
+          <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+            <span className="meta-text" style={{ fontSize: '12px' }}>
+              {formattedDate}
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: '12px',
+                letterSpacing: '0.06em',
+                color: 'var(--earth-medium)',
+              }}
+            >
+              {article.readingTime} min read
+            </span>
+          </div>
+
+          <h1
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 'clamp(30px, 5vw, 44px)',
+              fontWeight: 500,
+              color: 'var(--earth)',
+              marginBottom: '0.75rem',
+              lineHeight: 1.2,
+            }}
+          >
+            {article.title}
+          </h1>
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: 'italic',
+              fontSize: 'clamp(16px, 2.5vw, 20px)',
+              color: 'var(--gold)',
+              marginBottom: '2rem',
+            }}
+          >
+            {article.subtitle}
+          </p>
+
+          {/* Golden divider */}
+          <div
+            style={{
+              height: '1px',
+              background: 'linear-gradient(90deg, var(--gold), var(--gold-light), transparent)',
+            }}
+          />
         </div>
-        <h1
-          style={{
-            fontFamily: "var(--font-serif)",
-            fontSize: 'clamp(28px, 5vw, 42px)',
-            fontWeight: 400,
-            color: '#1A1A2E',
-            marginBottom: '0.75rem',
-            lineHeight: 1.2,
-          }}
-        >
-          {article.title}
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-serif)",
-            fontStyle: 'italic',
-            fontSize: '18px',
-            color: '#5B6B7D',
-            marginBottom: '2rem',
-          }}
-        >
-          {article.subtitle}
-        </p>
-        <hr className="manuscript-rule" />
       </section>
 
       {/* Article body */}
@@ -115,10 +169,10 @@ export default function ArticlePage() {
         ref={content.ref}
         className="reading-column article-body"
         style={{
-          paddingBottom: '4rem',
+          padding: 'clamp(2rem, 4vw, 3rem) 1.25rem clamp(3rem, 6vw, 5rem)',
           opacity: content.visible ? 1 : 0,
           transform: content.visible ? 'translateY(0)' : 'translateY(8px)',
-          transition: 'opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s',
+          transition: 'opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s',
         }}
       >
         {renderBody(article.body)}
@@ -126,10 +180,15 @@ export default function ArticlePage() {
 
       {/* Article navigation */}
       <section
-        className="reading-column"
-        style={{ paddingBottom: '6rem' }}
+        style={{
+          maxWidth: '680px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          padding: '0 1.25rem clamp(4rem, 6vw, 6rem)',
+        }}
       >
-        <hr className="manuscript-rule" style={{ marginBottom: '2rem' }} />
+        <div className="golden-rule" style={{ marginBottom: '2.5rem' }} />
+
         <div
           style={{
             display: 'flex',
@@ -149,11 +208,14 @@ export default function ArticlePage() {
               </span>
               <span
                 style={{
-                  fontFamily: "var(--font-serif)",
+                  fontFamily: "var(--font-display)",
                   fontSize: '16px',
-                  color: '#1A1A2E',
+                  color: 'var(--earth)',
                   lineHeight: 1.3,
+                  transition: 'color 0.3s',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold-dark)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--earth)')}
               >
                 {prevArticle.title}
               </span>
@@ -169,23 +231,23 @@ export default function ArticlePage() {
               </span>
               <span
                 style={{
-                  fontFamily: "var(--font-serif)",
+                  fontFamily: "var(--font-display)",
                   fontSize: '16px',
-                  color: '#1A1A2E',
+                  color: 'var(--earth)',
                   lineHeight: 1.3,
+                  transition: 'color 0.3s',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold-dark)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--earth)')}
               >
                 {nextArticle.title}
               </span>
             </Link>
           ) : <div />}
         </div>
+
         <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-          <Link
-            href="/writing"
-            className="nav-link"
-            style={{ fontSize: '12px' }}
-          >
+          <Link href="/writing" className="warm-button" style={{ fontSize: '13px', padding: '0.65rem 1.75rem' }}>
             All Essays
           </Link>
         </div>
