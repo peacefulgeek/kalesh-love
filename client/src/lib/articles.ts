@@ -9,6 +9,7 @@ export interface Article {
   readingTime: number;
   excerpt: string;
   body: string;
+  heroImage: string;
 }
 
 export const articles: Article[] = [
@@ -18,6 +19,7 @@ export const articles: Article[] = [
     subtitle: 'On where you place awareness',
     date: '2025-11-15',
     readingTime: 7,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-01-architecture-attention_1f2b809e.jpg',
     excerpt: 'There is a quality of attention that precedes and underlies all experience, a foundational stratum of consciousness upon which the edifice of the self is constructed.',
     body: `There is a quality of attention that precedes and underlies all experience, a foundational stratum of consciousness upon which the edifice of the self is constructed. This is not the effortful, directed focus of the student studying for an examination, nor the scattered, reactive awareness of a mind lost in the digital torrent. Rather, it is the silent, pervasive field of knowing that is always present, the canvas upon which the world is painted. To inquire into the nature of this field is to inquire into the very architecture of awareness itself, to explore the unseen structures that shape not only what one perceives, but who one perceives oneself to be. The central thesis of this exploration is a simple one, yet its implications are profound: where attention goes, identity follows.
 
@@ -49,6 +51,7 @@ What, then, is the nature of this self that is so fluid, so malleable, so depend
     subtitle: 'On somatic intelligence',
     date: '2025-11-08',
     readingTime: 11,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-02-body-knows_d8f51cbd.jpg',
     excerpt: 'There is a quality of attention that precedes thought, a form of knowing that arises not from the intricate architecture of the intellect but from the silent, resonant depths of the organism itself.',
     body: `There is a quality of attention that precedes thought, a form of knowing that arises not from the intricate architecture of the intellect but from the silent, resonant depths of the organism itself. This somatic intelligence, an ancient and often forgotten faculty, operates on a timeline far more immediate than cognitive processing. It is a language of sensation, of subtle shifts in the internal landscape, a direct perception of reality unmediated by the elaborate structures of interpretation and narrative that the mind so diligently constructs. The body knows before the mind decides, not as a predictive mechanism, but as a direct participant in the unfolding fabric of the present moment, and to engage with this corporeal wisdom is to enter a different order of experience, one where truth is not a concept to be grasped but a felt reality to be inhabited.
 
@@ -90,6 +93,7 @@ This journey into somatic intelligence is not about abandoning the intellect, bu
     subtitle: 'On the circularity of self-improvement',
     date: '2025-10-29',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-03-paradox-seeking_0f74ca5a.jpg',
     excerpt: 'There is a quality of attention that precedes the formulation of a goal, a spaciousness that exists before the mind delineates a path toward something better.',
     body: `There is a quality of attention that precedes the formulation of a goal, a spaciousness that exists before the mind delineates a path toward something better. Within this initial quietude, the impulse to become, to improve, to arrive at a more realized state of being, has not yet taken root. The spiritual search, in its most common form, represents a departure from this ground of being. It posits a future self that is more whole, more enlightened, or more at peace than the present self, and in doing so, it cleaves reality into a seeker and a sought, a problem and a solution. This division is the foundational act of a subtle but profound violence against the wholeness of what is. The very one who initiates the search is the one who creates the distance, and the journey becomes a circular and often exhausting pilgrimage back to the place that was never truly left.
 
@@ -125,6 +129,7 @@ What, then, is the nature of the attention that can perceive this unity without 
     subtitle: 'On Krishnamurti\'s core teaching',
     date: '2025-10-20',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-04-conditioning_c4c71ccc.jpg',
     excerpt: 'There is a quality of attention that precedes analysis, a way of seeing that is not yet entangled with the machinery of thought. It is in this pre-cognitive space that the vast, silent architecture of our inner world is revealed.',
     body: `There is a quality of attention that precedes analysis, a way of seeing that is not yet entangled with the machinery of thought. It is in this pre-cognitive space that the vast, silent architecture of our inner world is revealed. We often proceed with the assumption that our beliefs guide our perceptions, that the conscious mind is the primary author of our experience. Yet, a deeper inquiry reveals a more subtle and pervasive force at play, a current that runs beneath the surface of our declared philosophies and chosen identities. This is the realm of conditioning, the intricate web of impressions and patterns that shapes what we see long before we have decided what to think about it.
 
@@ -172,6 +177,7 @@ What, then, is the nature of the self that perceives its own conditioning? Is th
     subtitle: 'On polyvagal reality',
     date: '2025-10-11',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-05-nervous-system_c4c238fb.jpg',
     excerpt: 'There is a quality of attention that precedes thought, a foundational awareness that holds the entire architecture of awareness. Before the mind constructs its elaborate narratives of identity, purpose',
     body: `There is a quality of attention that precedes thought, a foundational awareness that holds the entire architecture of awareness. Before the mind constructs its elaborate narratives of identity, purpose, and meaning, there is the simple, profound reality of the body. It is the vessel, the instrument, and the very ground of our being. For centuries, contemplative traditions have sought to understand the nature of consciousness, yet much of this exploration has been framed as a journey of the mind, a cognitive or spiritual ascent. But what if the capacity for presence, for connection, for the deep stillness that so many seek, is not primarily a matter of will or belief, but of physiological state? What if the path to awakening is not paved with concepts, but with the felt sense of safety in one’s own skin?
 
@@ -219,6 +225,7 @@ What, then, becomes possible when the relentless search for a different, better 
     subtitle: 'On Sadhguru\'s framework, demystified',
     date: '2025-10-02',
     readingTime: 10,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-06-karma_7b16868d.jpg',
     excerpt: 'There is a quality of attention that precedes understanding, a way of looking that does not seek to grasp or define but to simply witness the unfolding of what is.',
     body: `There is a quality of attention that precedes understanding, a way of looking that does not seek to grasp or define but to simply witness the unfolding of what is. When this quality of attention is turned toward the concept of karma, the popular notions of cosmic bookkeeping, of reward and punishment meted out by an unseen arbiter, begin to dissolve. The transactional model of karma, a celestial ledger of good and bad deeds, is a simplification, a story the mind tells itself to make sense of the seemingly senseless. The reality is something far more intimate, more intricate, and ultimately, more liberating. Karma is not a system of justice; it is a system of memory.
 
@@ -260,6 +267,7 @@ The path is not one of clearing a cosmic debt, but of waking up from the dream o
     subtitle: 'On stripping the hype',
     date: '2025-09-23',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-07-meditation_10390e28.jpg',
     excerpt: 'There is a quality of attention that precedes analysis, a mode of perception that does not rush to categorize or conclude. In the contemporary landscape, the practice of meditation has been largely fra',
     body: `There is a quality of attention that precedes analysis, a mode of perception that does not rush to categorize or conclude. In the contemporary landscape, the practice of meditation has been largely framed as an intervention, a tool for optimizing the human machine. It is presented as a prescription for the maladies of modernity: a cure for anxiety, a booster for productivity, a method for engineering happiness. This transactional view, while understandable in a culture oriented toward results, subtly misses the profound essence of the contemplative endeavor. It positions the practitioner as a project to be improved, a problem to be solved, and meditation as the technique for its resolution. But what if the practice is not a tool for fixing, but a space for seeing? What if its primary function is not to change what is present, but to reveal it with an unsparing, compassionate clarity?
 
@@ -297,6 +305,7 @@ What is perceived when the lens of perception is finally polished, not to see so
     subtitle: 'On the gap that changes everything',
     date: '2025-09-14',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-08-stimulus-response_067121cf.jpg',
     excerpt: 'There is a quality of attention that precedes and informs every meaningful choice, a quiet interval between the world’s demand and a practitioner’s response.',
     body: `There is a quality of attention that precedes and informs every meaningful choice, a quiet interval between the world’s demand and a practitioner’s response. It is a space often overlooked, a momentary caesura in the relentless rhythm of cause and effect, of stimulus and reaction. The neurologist and psychiatrist Viktor Frankl, a survivor of the Holocaust, pointed to this lacuna with profound clarity, suggesting that within this brief, silent opening lies humanity's ultimate freedom. Between what happens to a person and how they react to it, there is a pause, and in that pause is the power to choose a response. In that response, Frankl asserted, lies growth and freedom. This is not a mere psychological trick or a clever reframing, but a fundamental principle of a conscious existence, a principle that reverberates through contemplative traditions and is increasingly illuminated by the precise language of neuroscience.
 
@@ -336,6 +345,7 @@ What, then, might it mean to live a life in which this space is not a rare and f
     subtitle: 'On how we see after we\'ve been hurt',
     date: '2025-09-05',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-09-trauma_1ffbe5dc.jpg',
     excerpt: 'There is a fundamental misunderstanding that surrounds the experience of profound psychological injury, a belief that trauma is an event confined to the past, a scar that one simply learns to live with.',
     body: `There is a fundamental misunderstanding that surrounds the experience of profound psychological injury, a belief that trauma is an event confined to the past, a scar that one simply learns to live with. This view, however, fails to grasp the sheer architectural force of such experiences. Trauma is not merely a memory of a painful event; it is a radical reorganization of the very fabric of perception. It does not simply leave a mark on the self; it reconfigures the lens through which the self apprehends reality. What happens to a person is secondary to what happens within them. The world does not change after a traumatic event, but the one who perceives it does, irrevocably. The central nervous system, having been overwhelmed, recalibrates to a new baseline, one where threat is imminent and safety is a fragile, conditional state. This is not a conscious choice, but a deep, instinctual adaptation for survival that unfolds far beneath the threshold of cognitive awareness.
 
@@ -369,6 +379,7 @@ What, then, does it mean to see clearly? If trauma reorganizes perception to see
     subtitle: 'On the convergence point',
     date: '2025-08-27',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-10-traditions_f4515372.jpg',
     excerpt: 'There is a quality of attention that precedes analysis, a foundational awareness upon which all subsequent thought is built. The great contemplative traditions, in their myriad forms and cultural expre',
     body: `There is a quality of attention that precedes analysis, a foundational awareness upon which all subsequent thought is built. The great contemplative traditions, in their myriad forms and cultural expressions, consistently point toward this foundational layer of experience. While their maps differ, the territory they indicate shares a remarkable consistency. From the Vedantic concept of Atman-Brahman to the Buddhist doctrine of Anatta, from the Taoist embrace of the uncarved block to the Christian mystic's via negativa, a common thread emerges: the dissolution of the apparently separate self as the gateway to a more profound reality. This is not a failure of the self, but its ultimate fulfillment.
 
@@ -412,6 +423,7 @@ What, then, is the nature of the awareness that witnesses the arising and passin
     subtitle: 'On uncovering vs. building',
     date: '2025-08-18',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-11-awareness_0a110bca.jpg',
     excerpt: 'There is a quality of attention that precedes all effort, a foundational awareness that is not the product of striving but the very ground of being itself.',
     body: `There is a quality of attention that precedes all effort, a foundational awareness that is not the product of striving but the very ground of being itself. The contemplative traditions, in their most subtle expressions, do not speak of creating this awareness, but of returning to it. They point toward a presence that has been overlooked, a clarity that has been veiled by the ceaseless activity of the mind and the accumulated weight of personal history. The path is not one of construction, but of excavation. It is a journey inward to uncover what has always been there, waiting patiently beneath the surface of our becoming, a silent wellspring of peace that nourishes the roots of existence.
 
@@ -445,6 +457,7 @@ What if the freedom that is sought is not in the future, but is the very space i
     subtitle: 'On sophisticated bypass',
     date: '2025-08-09',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-12-ego-disguise_a712e344.jpg',
     excerpt: 'There is a quality of attention that precedes true transformation, a listening that is not directed by the will but arises from a state of profound receptivity.',
     body: `There is a quality of attention that precedes true transformation, a listening that is not directed by the will but arises from a state of profound receptivity. The spiritual path, in its modern incarnation, often presents itself as a project of self-improvement, a ladder of ascent toward a more enlightened, peaceful, or actualized state. This orientation, however, can obscure a more subtle and pervasive dynamic: the ego’s capacity to co-opt the very tools of its own supposed dissolution. The journey of awakening is frequently depicted as a heroic battle against the ego, a process of transcending the limited self to merge with a greater whole. Yet, what if the ego does not die? What if, instead, it simply rebrands? This is the core of one of the most sophisticated forms of bypass, where the pursuit of spiritual growth becomes the ego’s most convincing disguise. The ego reorganizes around its own transcendence, adopting the language of liberation while reinforcing the very structures of separation it claims to be dismantling. The result is not freedom, but a more refined and often invisible form of bondage.
 
@@ -480,6 +493,7 @@ What, then, is the quality of awareness that can see through its own disguises?`
     subtitle: 'On living in the body, not visiting it',
     date: '2025-07-31',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-13-embodiment_ca8d50b4.jpg',
     excerpt: 'There is a persistent notion in the modern spiritual landscape that embodiment is a state to be achieved, a technique to be mastered, a destination at which one finally arrives after sufficient practice.',
     body: `There is a persistent notion in the modern spiritual landscape that embodiment is a state to be achieved, a technique to be mastered, a destination at which one finally arrives after sufficient practice. This perspective, however well-intentioned, subtly reinforces the very separation it seeks to overcome. It positions the body as a project, an object to be worked upon, refined, and ultimately conquered by a disembodied will. The pursuit of embodiment becomes another form of striving, another goal for the ego to appropriate and display as a trophy of spiritual accomplishment. But what if embodiment is not a technique one performs, but a way of being one returns to? What if it is not a destination, but the very ground upon which the journey unfolds? This inquiry invites a radical shift in perspective, away from the language of doing and toward the syntax of being, away from the ambition of visiting the body and toward the quiet homecoming of living within it.
 
@@ -517,6 +531,7 @@ What, then, would it mean to approach the body not as a problem to be solved, bu
     subtitle: 'On what neuroscience says about meditation',
     date: '2025-07-22',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-14-science-stillness_621d13f6.jpg',
     excerpt: 'There is a quality of attention that precedes, and ultimately subsumes, the act of thinking. The contemplative traditions, from the forest sages of the Upanishads to the desert fathers of early Christi',
     body: `There is a quality of attention that precedes, and ultimately subsumes, the act of thinking. The contemplative traditions, from the forest sages of the Upanishads to the desert fathers of early Christianity, have long pointed toward this foundational layer of being. It is a state often described as stillness, a term the modern mind can misconstrue as mere quietude or a simple lack of external stimuli. Yet, true stillness is not the absence of movement; it is a profound quality of presence that can be discovered amidst the chaos of life as readily as in the silence of a monastery. It is the subtle ground upon which the figures of thought, emotion, and sensation dance. For centuries, this understanding was the domain of mystics and practitioners, a truth transmitted through esoteric lineages and verified only through direct, subjective experience. The language used was often poetic, metaphorical, and resistant to the empirical frameworks that would come to define the modern era.
 
@@ -556,6 +571,7 @@ As the methodologies of science become ever more refined, what further convergen
     subtitle: 'On listening to what pushes back',
     date: '2025-07-13',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-15-resistance_19273bda.jpg',
     excerpt: 'There is a quality of attention that precedes analysis, a way of listening that is not directed toward a problem to be solved but toward a phenomenon to be understood.',
     body: `There is a quality of attention that precedes analysis, a way of listening that is not directed toward a problem to be solved but toward a phenomenon to be understood. In the contemplative traditions, this quality of attention is the ground of all practice. It is often assumed that the path of inner work is one of clearing away obstacles, of removing the impediments to a state of peace or clarity. Resistance, in this model, becomes an adversary—a stubborn, unwanted guest at the table of self-inquiry. But what if this framework is fundamentally flawed? What if resistance is not an obstacle to the path, but the path itself, speaking in a language the conscious mind has yet to learn? What if what we resist persists not as punishment but as invitation?
 
@@ -593,6 +609,7 @@ Ultimately, to listen to resistance is to engage in the most fundamental act of 
     subtitle: 'On letting experience move through',
     date: '2025-07-04',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-16-integration_a420aa10.jpg',
     excerpt: 'There is a quality of attention that precedes understanding, a mode of perception that does not grasp or categorize but simply allows the phenomenal world to be as it is.',
     body: `There is a quality of attention that precedes understanding, a mode of perception that does not grasp or categorize but simply allows the phenomenal world to be as it is. In the landscape of inner work, this quality of attention is often directed toward the complex and frequently misunderstood process of integration. A prevailing notion suggests that integration is an act of cognitive collection, of gathering insights and peak experiences like precious stones, carefully storing them in the treasury of memory. It is a perspective that frames healing and growth as an additive process, one of remembering, analyzing, and holding on to what has been learned. Yet, this view, however well-intentioned, mistakes the scaffolding for the building, the map for the territory. True integration is not an act of remembering; it is an act of release, a process not of holding on, but of letting experience move through the entire system until it dissolves into the very fabric of being.
 
@@ -622,6 +639,7 @@ In the end, the journey of integration is a journey toward silence. Not the sile
     subtitle: 'On the felt sense',
     date: '2025-06-25',
     readingTime: 11,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-17-knowledge-knowing_f352f9af.jpg',
     excerpt: 'There is a quality of attention that precedes understanding, a mode of perception that is not yet filtered through the intricate lattice of concepts and categories.',
     body: `There is a quality of attention that precedes understanding, a mode of perception that is not yet filtered through the intricate lattice of concepts and categories. It is in this pre-conceptual space that one first encounters the profound distinction between what is known as information and what is felt as an intimate truth. The modern world is saturated with knowledge, an ever-expanding library of facts, models, and theories that describe the mechanics of the universe. Yet, an accumulation of descriptions, no matter how vast, does not necessarily equate to a deeper comprehension of one's own experience. One can possess a comprehensive knowledge of the botany of a forest, yet miss the felt reality of the forest itself. This divergence between the map and the territory, between the name and the thing named, lies at the heart of the contemplative inquiry. It is a journey from the architecture of the mind to the architecture of awareness itself.
 
@@ -663,6 +681,7 @@ What does it mean to live from this place of integrated knowing? It is to walk t
     subtitle: 'On unconscious repetition',
     date: '2025-06-16',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-18-pattern-prayer_711dcba0.jpg',
     excerpt: 'There is a quality of attention that precedes understanding, a way of listening to the subtle currents of one’s own life not for answers, but for a more refined quality of question.',
     body: `There is a quality of attention that precedes understanding, a way of listening to the subtle currents of one’s own life not for answers, but for a more refined quality of question. In this space of quiet observation, patterns begin to emerge from the background noise of daily existence. The same relational dynamics, the same internal resistances, the same cycles of enthusiasm and collapse—they repeat with an almost liturgical precision. These are not random occurrences or mere habits; they are the unconscious prayers of the psyche, articulating a story about the self that the conscious mind has yet to read. Every repetition is an unconscious prayer, a ritual enactment of a core belief held so deeply it has become transparent to the one who holds it. The work of contemplation is not to break these patterns, but to learn their language, to become intimate with their grammar and syntax, until the prayer itself is understood.
 
@@ -696,6 +715,7 @@ What if the very pattern that one has fought against for a lifetime, the source 
     subtitle: 'On the machinery of mind',
     date: '2025-06-07',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-19-compulsive-thinking_91d57604.jpg',
     excerpt: 'There is a quality of attention that precedes thought, a foundational stillness from which the movements of mind arise. In the ordinary course of a day, this ground of being is often obscured, veiled by a near-constant stream of cognitive activity.',
     body: `There is a quality of attention that precedes thought, a foundational stillness from which the movements of mind arise. In the ordinary course of a day, this ground of being is often obscured, veiled by a near-constant stream of cognitive activity. This is the mind at work, processing, planning, remembering, and imagining. Yet, a distinction of profound importance exists between the mind that serves and the mind that rules. A line is crossed when the stream becomes a torrent, when thinking is no longer a tool wielded by awareness but a compulsive, self-perpetuating cycle that consumes the very space it is meant to inhabit. This is the realm of compulsive thinking, a pattern of mental behavior that, despite its appearance of intellectual vigor, is fundamentally an architecture of avoidance. The serving mind is a remarkable instrument, capable of navigating complexity, creating beauty, and solving problems with elegant precision. It is responsive to the needs of the moment, guided by a deeper intelligence that flows from the quiet ground of our being. The ruling mind, however, has lost this connection. It has become a closed system, a feedback loop of its own anxieties and ambitions, endlessly talking to itself in an effort to secure its own dominion. It is a monarch cut off from its kingdom, issuing decrees to an empty room.
 
@@ -735,6 +755,7 @@ What, then, is the quality of a life lived from this place of uncovered silence,
     subtitle: 'On non-dual awareness for modern people',
     date: '2025-05-29',
     readingTime: 10,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-20-observer-observed_23d134cf.jpg',
     excerpt: 'There is a quality of attention that precedes analysis, a mode of perception that rests prior to the cognitive function that splits the world into subject and object, knower and known.',
     body: `There is a quality of attention that precedes analysis, a mode of perception that rests prior to the cognitive function that splits the world into subject and object, knower and known. This primary awareness, a field of silent receptivity, is the ground from which all experience arises. Yet, the conditioned mind, in its ceaseless activity of naming, judging, and categorizing, overlooks this ground. It becomes entranced by the figures that arise within the field, identifying with one part of the process—the observer—and alienating itself from the rest—the observed. This fundamental schism, this imagined separation between the one who sees and that which is seen, becomes the root of a pervasive and subtle suffering. The architecture of awareness, in its pristine state, is non-dual, a seamless whole. The journey of contemplation is not one of building a new structure, but of recognizing the simplicity of what is already present, before the mind constructs its elaborate partitions.
 
@@ -780,6 +801,7 @@ What, then, is the nature of action when it does not spring from a separate self
     subtitle: 'On sacred separation',
     date: '2025-05-20',
     readingTime: 10,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-21-boundaries_fa3fcf46.jpg',
     excerpt: 'There is a quality of attention that precedes action, a spaciousness in which the nature of a thing can be perceived before it is named. In this space, the concept of a boundary sheds its conventional ',
     body: `There is a quality of attention that precedes action, a spaciousness in which the nature of a thing can be perceived before it is named. In this space, the concept of a boundary sheds its conventional armor, revealing itself not as a wall erected in fear, but as a quiet articulation of clarity. The common understanding of boundaries is one of division, a line drawn in the sand between self and other, a necessary defense against a world that threatens to overwhelm. This view, while understandable, arises from a contracted state of awareness, a state in which the primary impulse is one of self-preservation rather than self-recognition. A contemplative approach invites a different perspective, one that sees boundaries as an expression of discernment, a form of sacred separation that honors the integrity of both what is within and what is without.
 
@@ -819,6 +841,7 @@ What, then, becomes possible when the practitioner ceases to build walls and ins
     subtitle: 'On presence vs. equilibrium',
     date: '2025-05-11',
     readingTime: 10,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-22-balanced-life_cf199dfd.jpg',
     excerpt: 'There is a quality of attention that precedes and underlies the incessant cultural narrative of balance. It is a quiet insistence on a different kind of equilibrium, one not predicated on the precariou',
     body: `There is a quality of attention that precedes and underlies the incessant cultural narrative of balance. It is a quiet insistence on a different kind of equilibrium, one not predicated on the precarious stacking of life’s disparate elements into a fragile, static structure. The modern fixation on achieving a “balanced life” has become a subtle form of striving, a goal-oriented pursuit that paradoxically generates more of the very tension it seeks to alleviate. This pursuit is often framed as a noble endeavor, a sign of a well-managed existence, yet it is a project that is, by its very nature, doomed to fail. Reality is not a fixed state to be managed but a dynamic, flowing process. To seek a static balance within this flux is to fundamentally misunderstand the nature of being. The practitioner of presence discovers that the real work is not to arrange the external world into a pleasing symmetry, but to cultivate an internal capacity to meet the inherent imbalance of life with unwavering awareness.
 
@@ -860,6 +883,7 @@ What if the goal was never to achieve a perfect, static balance, but to develop 
     subtitle: 'On the economics of awareness',
     date: '2025-05-02',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-23-attention-resource_dd372851.jpg',
     excerpt: 'There is a quality of attention that precedes and underlies all other cognitive functions, a foundational resource from which the edifice of experience is constructed.',
     body: `There is a quality of attention that precedes and underlies all other cognitive functions, a foundational resource from which the edifice of experience is constructed. In an age characterized by an unprecedented surplus of information, this faculty of directed consciousness has become the final frontier of scarcity, a resource more precious than any material commodity. The contemporary landscape is, in essence, an economy of attention, a vast and intricate marketplace where corporations, technologies, and media vie for the finite currency of human focus. This relentless competition has engineered an environment of perpetual distraction, a digital ecosystem designed not to inform or empower, but to capture and hold the gaze for the purpose of monetization. To exist in this space is to be subject to a constant, low-grade psychic erosion, a slow bleeding of the very capacity to be present to one’s own life. The architecture of awareness, the very ground of our being, is being strip-mined for profit, leaving behind a depleted inner landscape. The mind, conditioned for novelty and rapid-fire stimulus, loses its capacity for the slow, deep presence required for meaningful work, genuine connection, and self-awareness. This is not an accidental byproduct of technological progress but the intended consequence of a system that equates human consciousness with monetizable engagement.
 
@@ -891,6 +915,7 @@ The implications of this shift are profound, extending far beyond the individual
     subtitle: 'On Jung through a contemplative lens',
     date: '2025-04-23',
     readingTime: 9,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-24-shadow-blind_b4acef44.jpg',
     excerpt: 'There is a quality of attention that precedes understanding, a mode of perception that does not rush to categorize or conclude. It is in this spaciousness that the deeper structures of the psyche can b',
     body: `There is a quality of attention that precedes understanding, a mode of perception that does not rush to categorize or conclude. It is in this spaciousness that the deeper structures of the psyche can begin to reveal themselves, not as problems to be solved, but as landscapes to be navigated. One of the most profound and misunderstood of these landscapes is what the depth psychologist Carl Jung termed the shadow. In the common vernacular, the shadow has become synonymous with a kind of inner darkness, a repository for all that is evil, shameful, or malevolent within a person. This conception, while dramatic, is a fundamental misreading of a crucial psychological reality. The shadow is not dark; it is blind. It is not a domain of inherent evil, but the vast, unlit territory of the self that lies outside the narrow beam of conscious awareness.
 
@@ -928,6 +953,7 @@ This ongoing dialogue with the unseen aspects of the self is, in essence, an act
     subtitle: 'On what\'s already here',
     date: '2025-04-14',
     readingTime: 8,
+    heroImage: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/art-25-consciousness_fd63a58c.jpg',
     excerpt: 'There is a quality of attention that precedes all doing, a foundational stillness that is not the opposite of movement but its very source. The modern spiritual landscape is replete with maps of arriva',
     body: `There is a quality of attention that precedes all doing, a foundational stillness that is not the opposite of movement but its very source. The modern spiritual landscape is replete with maps of arrival, detailed topographies of a future self that is more whole, more aware, more present. These maps, born of a sincere desire for liberation from suffering, often inadvertently reinforce the very paradigm of separation they seek to dissolve. They suggest that consciousness is a destination to be reached, a state to be achieved through diligent practice and the slow accumulation of insight. Yet, the great contemplative traditions, when stripped of their cultural and dogmatic accretions, point not toward a future arrival but to a radical recognition of what is already and always present. Consciousness does not arrive—it is the ground from which all experience, including the experience of seeking, emerges.
 

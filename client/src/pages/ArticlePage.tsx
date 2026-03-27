@@ -1,13 +1,15 @@
 /*
  * KALESH.LOVE — Article Page
  * "The Sacred Glow" — Devotional Luminism
- * Warm reading experience with golden accents, pull quotes, and prev/next navigation.
+ * Full hero image, 2-column layout: article body (left) + sticky sidebar (right) with author photo, bio, links.
  */
 
 import { useParams, Link, Redirect } from "wouter";
 import { getArticleBySlug, articles } from "@/lib/articles";
 import { useEffect, useRef, useState } from "react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+
+const KALESH_PHOTO = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/Paul3Black_c2570dbc.jpg';
 
 function useInView(threshold = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,7 +45,48 @@ function renderBody(body: string) {
   });
 }
 
-const ARTICLE_OG_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/sacred-book-candlelight-JFxC9ZXa3SsactezK2R4fx.webp';
+function SidebarLink({ href, label, description }: { href: string; label: string; description: string }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: 'block',
+        padding: '0.85rem 1rem',
+        borderRadius: '8px',
+        border: '1px solid rgba(200, 149, 108, 0.15)',
+        background: hovered ? 'rgba(200, 149, 108, 0.06)' : 'transparent',
+        textDecoration: 'none',
+        transition: 'all 0.3s ease',
+        marginBottom: '0.65rem',
+      }}
+    >
+      <span style={{
+        fontFamily: "var(--font-display)",
+        fontSize: '15px',
+        fontWeight: 500,
+        color: hovered ? 'var(--gold-dark)' : 'var(--earth)',
+        display: 'block',
+        marginBottom: '0.2rem',
+        transition: 'color 0.3s',
+      }}>
+        {label}
+      </span>
+      <span style={{
+        fontFamily: "var(--font-body)",
+        fontSize: '13px',
+        color: 'var(--earth-medium)',
+        lineHeight: 1.4,
+      }}>
+        {description}
+      </span>
+    </a>
+  );
+}
 
 export default function ArticlePage() {
   const params = useParams<{ slug: string }>();
@@ -52,7 +95,7 @@ export default function ArticlePage() {
   usePageMeta({
     title: article ? `${article.title} — Kalesh` : 'Article — Kalesh',
     description: article ? article.subtitle : 'An essay on consciousness and contemplative practice.',
-    ogImage: ARTICLE_OG_IMAGE,
+    ogImage: article?.heroImage || KALESH_PHOTO,
     ogUrl: article ? `https://kalesh.love/writing/${article.slug}` : 'https://kalesh.love/writing',
   });
 
@@ -75,7 +118,7 @@ export default function ArticlePage() {
       '@type': 'Article',
       headline: article.title,
       description: article.subtitle,
-      image: ARTICLE_OG_IMAGE,
+      image: article.heroImage,
       datePublished: article.date,
       author: {
         '@type': 'Person',
@@ -114,107 +157,223 @@ export default function ArticlePage() {
 
   return (
     <div>
-      {/* Article header — warm cream background with golden accents */}
+      {/* Full-width Hero Image */}
       <section
+        ref={hero.ref}
         style={{
-          background: 'linear-gradient(to bottom, var(--cream-deep), var(--cream))',
-          padding: 'clamp(3rem, 6vw, 5rem) 1.25rem clamp(2rem, 4vw, 3rem)',
+          position: 'relative',
+          height: '55vh',
+          minHeight: '380px',
+          maxHeight: '550px',
+          overflow: 'hidden',
+          opacity: hero.visible ? 1 : 0,
+          transition: 'opacity 0.8s ease',
         }}
       >
-        <div
-          ref={hero.ref}
+        <img
+          src={article.heroImage}
+          alt={article.title}
           style={{
-            maxWidth: '680px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            opacity: hero.visible ? 1 : 0,
-            transform: hero.visible ? 'translateY(0)' : 'translateY(12px)',
-            transition: 'opacity 0.7s ease, transform 0.7s ease',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center 40%',
           }}
-        >
-          {/* Back to writing */}
-          <Link
-            href="/writing"
-            style={{
-              fontFamily: "var(--font-accent)",
-              fontSize: '13px',
-              letterSpacing: '0.06em',
-              color: 'var(--gold)',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              marginBottom: '2rem',
-              transition: 'color 0.3s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--gold-dark)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gold)')}
-          >
-            <span style={{ fontSize: '16px' }}>&larr;</span> All Essays
-          </Link>
-
-          <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
-            <span className="meta-text" style={{ fontSize: '12px' }}>
-              {formattedDate}
-            </span>
-            <span
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to bottom, rgba(26, 21, 32, 0.15) 0%, rgba(26, 21, 32, 0.55) 100%)',
+          }}
+        />
+        {/* Title overlay on hero */}
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          padding: 'clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 3rem)',
+          background: 'linear-gradient(to top, rgba(26, 21, 32, 0.7), transparent)',
+        }}>
+          <div style={{ maxWidth: '800px' }}>
+            <Link
+              href="/writing"
               style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: '13px',
+                letterSpacing: '0.08em',
+                color: 'var(--gold-light)',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                marginBottom: '1rem',
+                textTransform: 'uppercase',
+              }}
+            >
+              <span style={{ fontSize: '16px' }}>&larr;</span> All Essays
+            </Link>
+            <h1 style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 'clamp(28px, 5vw, 44px)',
+              fontWeight: 500,
+              color: 'var(--cream)',
+              marginBottom: '0.5rem',
+              lineHeight: 1.2,
+              textShadow: '0 2px 20px rgba(0,0,0,0.3)',
+            }}>
+              {article.title}
+            </h1>
+            <p style={{
+              fontFamily: "var(--font-display)",
+              fontStyle: 'italic',
+              fontSize: 'clamp(15px, 2vw, 19px)',
+              color: 'var(--gold-light)',
+              marginBottom: '0.75rem',
+            }}>
+              {article.subtitle}
+            </p>
+            <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
+              <span style={{
                 fontFamily: "var(--font-accent)",
                 fontSize: '12px',
                 letterSpacing: '0.06em',
-                color: 'var(--earth-medium)',
-              }}
-            >
-              {article.readingTime} min read
-            </span>
+                color: 'rgba(253, 248, 240, 0.7)',
+              }}>
+                {formattedDate}
+              </span>
+              <span style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: '12px',
+                letterSpacing: '0.06em',
+                color: 'rgba(253, 248, 240, 0.7)',
+              }}>
+                {article.readingTime} min read
+              </span>
+            </div>
           </div>
-
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: 'clamp(30px, 5vw, 44px)',
-              fontWeight: 500,
-              color: 'var(--earth)',
-              marginBottom: '0.75rem',
-              lineHeight: 1.2,
-            }}
-          >
-            {article.title}
-          </h1>
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: 'italic',
-              fontSize: 'clamp(16px, 2.5vw, 20px)',
-              color: 'var(--gold)',
-              marginBottom: '2rem',
-            }}
-          >
-            {article.subtitle}
-          </p>
-
-          {/* Golden divider */}
-          <div
-            style={{
-              height: '1px',
-              background: 'linear-gradient(90deg, var(--gold), var(--gold-light), transparent)',
-            }}
-          />
         </div>
       </section>
 
-      {/* Article body */}
+      {/* Two-column layout: Article body + Sticky sidebar */}
       <section
         ref={content.ref}
-        className="reading-column article-body"
         style={{
-          padding: 'clamp(2rem, 4vw, 3rem) 1.25rem clamp(3rem, 6vw, 5rem)',
+          maxWidth: '1100px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          padding: 'clamp(2.5rem, 5vw, 4rem) 1.25rem clamp(3rem, 6vw, 5rem)',
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          gap: '3rem',
           opacity: content.visible ? 1 : 0,
           transform: content.visible ? 'translateY(0)' : 'translateY(8px)',
           transition: 'opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s',
         }}
+        className="article-two-col"
       >
-        {renderBody(article.body)}
+        {/* Left column — article body */}
+        <div className="article-body" style={{ maxWidth: '680px' }}>
+          {renderBody(article.body)}
+        </div>
+
+        {/* Right column — sticky sidebar */}
+        <aside className="article-sidebar" style={{
+          position: 'sticky',
+          top: '100px',
+          alignSelf: 'start',
+        }}>
+          {/* Author photo + bio */}
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '1.5rem',
+            padding: '1.5rem',
+            background: 'linear-gradient(135deg, rgba(200, 149, 108, 0.06), rgba(245, 237, 224, 0.5))',
+            borderRadius: '12px',
+            border: '1px solid rgba(200, 149, 108, 0.12)',
+          }}>
+            <img
+              src={KALESH_PHOTO}
+              alt="Kalesh"
+              style={{
+                width: '90px',
+                height: '90px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                objectPosition: 'center 20%',
+                border: '2px solid var(--gold-light)',
+                marginBottom: '0.85rem',
+              }}
+            />
+            <h4 style={{
+              fontFamily: "var(--font-display)",
+              fontSize: '18px',
+              fontWeight: 500,
+              color: 'var(--earth)',
+              marginBottom: '0.4rem',
+            }}>
+              Kalesh
+            </h4>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: '13.5px',
+              color: 'var(--earth-medium)',
+              lineHeight: 1.6,
+              marginBottom: 0,
+            }}>
+              Consciousness teacher, writer, and contemplative practitioner. Two decades of inquiry across Vedantic philosophy, Buddhist psychology, and Taoist thought.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div style={{ marginBottom: '1rem' }}>
+            <span style={{
+              fontFamily: "var(--font-accent)",
+              fontSize: '11px',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--gold)',
+              display: 'block',
+              marginBottom: '0.75rem',
+            }}>
+              Explore
+            </span>
+            <SidebarLink
+              href="https://theshankaraexperience.com"
+              label="The Shankara Oracle"
+              description="A contemplative tool for deep self-reflection and inquiry"
+            />
+            <SidebarLink
+              href="https://thepersonalitycards.com"
+              label="The Personality Cards"
+              description="Illuminating the patterns of your inner landscape"
+            />
+            <SidebarLink
+              href="https://paulwagner.com/readings"
+              label="Sessions & Readings"
+              description="Private intuitive sessions and spiritual mentorship"
+            />
+          </div>
+
+          {/* Link to About */}
+          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+            <Link
+              href="/about"
+              style={{
+                fontFamily: "var(--font-accent)",
+                fontSize: '13px',
+                letterSpacing: '0.06em',
+                color: 'var(--gold)',
+                textDecoration: 'none',
+                borderBottom: '1px solid var(--gold-light)',
+                transition: 'border-color 0.3s',
+              }}
+            >
+              Read full bio &rarr;
+            </Link>
+          </div>
+        </aside>
       </section>
 
       {/* Article navigation */}

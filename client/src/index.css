@@ -470,3 +470,37 @@ h1, h2, h3, h4 {
 html {
   scroll-behavior: smooth;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   TWO-COLUMN ARTICLE LAYOUT
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (min-width: 900px) {
+  .article-two-col {
+    grid-template-columns: 1fr 280px !important;
+  }
+}
+
+@media (max-width: 899px) {
+  .article-sidebar {
+    position: static !important;
+    order: -1;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TWO-COLUMN WRITING PAGE LAYOUT
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (min-width: 900px) {
+  .writing-two-col {
+    grid-template-columns: 1fr 280px !important;
+  }
+}
+
+@media (max-width: 899px) {
+  .writing-sidebar {
+    position: static !important;
+    order: -1;
+  }
+}

@@ -1,11 +1,15 @@
 /*
  * KALESH.LOVE — About Page
  * "The Sacred Glow" — Devotional Luminism
- * Warm hero with prayer hands image, rich bio in warm tones.
+ * Author photo centered, full bio, links to offerings below.
  */
 
 import { useEffect, useRef, useState } from "react";
 import { usePageMeta } from "@/hooks/usePageMeta";
+
+const HERO_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/hands-light-prayer-2fEpto4VJ4y4pCyAS44hMh.webp';
+const STONES_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/sacred-stones-warm-kumBbqKReuXb5LUzinSf2m.webp';
+const KALESH_PHOTO = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/Paul3Black_c2570dbc.jpg';
 
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,9 +26,6 @@ function useInView(threshold = 0.12) {
   }, [threshold]);
   return { ref, visible };
 }
-
-const HERO_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/hands-light-prayer-2fEpto4VJ4y4pCyAS44hMh.webp';
-const STONES_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/6pnsQyMjNn93WhuPNnqKo4/sacred-stones-warm-kumBbqKReuXb5LUzinSf2m.webp';
 
 function ProseLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -46,6 +47,50 @@ function ProseLink({ href, children }: { href: string; children: React.ReactNode
   );
 }
 
+function OfferingCard({ href, title, description }: { href: string; title: string; description: string }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: 'block',
+        padding: '1.25rem 1.5rem',
+        borderRadius: '10px',
+        border: '1px solid rgba(200, 149, 108, 0.2)',
+        background: hovered ? 'rgba(200, 149, 108, 0.06)' : 'var(--cream)',
+        textDecoration: 'none',
+        transition: 'all 0.4s ease',
+        boxShadow: hovered ? '0 4px 20px rgba(200, 149, 108, 0.12)' : '0 2px 8px rgba(139, 107, 74, 0.04)',
+        transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
+      }}
+    >
+      <span style={{
+        fontFamily: "var(--font-display)",
+        fontSize: '17px',
+        fontWeight: 500,
+        color: hovered ? 'var(--gold-dark)' : 'var(--earth)',
+        display: 'block',
+        marginBottom: '0.35rem',
+        transition: 'color 0.3s',
+      }}>
+        {title}
+      </span>
+      <span style={{
+        fontFamily: "var(--font-body)",
+        fontSize: '14px',
+        color: 'var(--earth-medium)',
+        lineHeight: 1.55,
+      }}>
+        {description}
+      </span>
+    </a>
+  );
+}
+
 export default function About() {
   usePageMeta({
     title: 'About Kalesh — Consciousness Teacher & Writer',
@@ -54,11 +99,13 @@ export default function About() {
     ogUrl: 'https://kalesh.love/about',
   });
 
+  const photoSection = useInView();
   const section1 = useInView();
   const section2 = useInView();
   const section3 = useInView();
   const imageSection = useInView();
   const section4 = useInView();
+  const linksSection = useInView();
 
   return (
     <div>
@@ -66,8 +113,8 @@ export default function About() {
       <section
         style={{
           position: 'relative',
-          height: '55vh',
-          minHeight: '380px',
+          height: '50vh',
+          minHeight: '350px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -117,8 +164,52 @@ export default function About() {
         </div>
       </section>
 
+      {/* Author Photo — centered, medium size */}
+      <div
+        ref={photoSection.ref}
+        style={{
+          textAlign: 'center',
+          padding: 'clamp(2.5rem, 5vw, 4rem) 1.25rem 0',
+          opacity: photoSection.visible ? 1 : 0,
+          transform: photoSection.visible ? 'translateY(0)' : 'translateY(16px)',
+          transition: 'opacity 0.8s ease, transform 0.8s ease',
+        }}
+      >
+        <img
+          src={KALESH_PHOTO}
+          alt="Kalesh"
+          style={{
+            width: '180px',
+            height: '180px',
+            borderRadius: '50%',
+            objectFit: 'cover',
+            objectPosition: 'center 20%',
+            border: '3px solid var(--gold-light)',
+            boxShadow: '0 8px 40px rgba(200, 149, 108, 0.2)',
+          }}
+        />
+        <h2 style={{
+          fontFamily: "var(--font-display)",
+          fontSize: '28px',
+          fontWeight: 500,
+          color: 'var(--earth)',
+          marginTop: '1.25rem',
+          marginBottom: '0.25rem',
+        }}>
+          Kalesh
+        </h2>
+        <p style={{
+          fontFamily: "var(--font-accent)",
+          fontSize: '14px',
+          letterSpacing: '0.06em',
+          color: 'var(--gold)',
+        }}>
+          Consciousness Teacher &middot; Writer &middot; Contemplative Practitioner
+        </p>
+      </div>
+
       {/* Bio content */}
-      <div className="reading-column" style={{ padding: 'clamp(3rem, 6vw, 5rem) 1.25rem' }}>
+      <div className="reading-column" style={{ padding: 'clamp(2rem, 4vw, 3rem) 1.25rem' }}>
         {/* Section 1 */}
         <div
           ref={section1.ref}
@@ -207,8 +298,8 @@ export default function About() {
         ref={imageSection.ref}
         style={{
           position: 'relative',
-          height: '45vh',
-          minHeight: '300px',
+          height: '40vh',
+          minHeight: '280px',
           overflow: 'hidden',
           opacity: imageSection.visible ? 1 : 0,
           transition: 'opacity 1s ease',
@@ -237,6 +328,7 @@ export default function About() {
             opacity: section4.visible ? 1 : 0,
             transform: section4.visible ? 'translateY(0)' : 'translateY(16px)',
             transition: 'opacity 0.8s ease, transform 0.8s ease',
+            marginBottom: '3rem',
           }}
         >
           <p>
@@ -256,6 +348,67 @@ export default function About() {
           </p>
         </div>
       </div>
+
+      {/* Offerings / Links Section */}
+      <section
+        style={{
+          background: 'linear-gradient(135deg, var(--cream-deep), var(--cream))',
+          padding: 'clamp(3rem, 6vw, 5rem) 1.25rem',
+        }}
+      >
+        <div
+          ref={linksSection.ref}
+          style={{
+            maxWidth: '680px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            opacity: linksSection.visible ? 1 : 0,
+            transform: linksSection.visible ? 'translateY(0)' : 'translateY(16px)',
+            transition: 'opacity 0.8s ease, transform 0.8s ease',
+          }}
+        >
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <span className="meta-text" style={{ marginBottom: '0.75rem', display: 'block' }}>
+              Explore
+            </span>
+            <h2 style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 'clamp(24px, 4vw, 32px)',
+              fontWeight: 500,
+              color: 'var(--earth)',
+            }}>
+              Continue the Inquiry
+            </h2>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1rem',
+          }}>
+            <OfferingCard
+              href="https://theshankaraexperience.com"
+              title="The Shankara Oracle"
+              description="A contemplative tool for deep self-reflection, drawing from multiple wisdom traditions to illuminate the patterns of consciousness."
+            />
+            <OfferingCard
+              href="https://thepersonalitycards.com"
+              title="The Personality Cards"
+              description="Illuminating the patterns of your inner landscape through an intuitive card system designed for self-understanding."
+            />
+            <OfferingCard
+              href="https://paulwagner.com/readings"
+              title="Sessions & Readings"
+              description="Private intuitive sessions and spiritual mentorship for those drawn to serious, sustained inner work."
+            />
+            <OfferingCard
+              href="https://paulwagner.com"
+              title="PaulWagner.com"
+              description="The primary teaching platform — articles, resources, and educational content on consciousness and contemplative practice."
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
