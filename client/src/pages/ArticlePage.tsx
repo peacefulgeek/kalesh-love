@@ -59,6 +59,45 @@ export default function ArticlePage() {
   const hero = useInView();
   const content = useInView();
 
+  // Inject Article JSON-LD structured data
+  useEffect(() => {
+    if (!article) return;
+    const id = 'article-jsonld';
+    let script = document.getElementById(id) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = id;
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: article.title,
+      description: article.subtitle,
+      image: ARTICLE_OG_IMAGE,
+      datePublished: article.date,
+      author: {
+        '@type': 'Person',
+        name: 'Kalesh',
+        url: 'https://kalesh.love/about',
+      },
+      publisher: {
+        '@type': 'Person',
+        name: 'Kalesh',
+        url: 'https://kalesh.love',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `https://kalesh.love/writing/${article.slug}`,
+      },
+      wordCount: article.body.split(/\s+/).length,
+    });
+    return () => {
+      script?.remove();
+    };
+  }, [article]);
+
   if (!article) {
     return <Redirect to="/404" />;
   }
