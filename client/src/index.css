@@ -3,6 +3,29 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * KALESH.LOVE DESIGN SYSTEM — "The Folio"
+ * Archival Manuscript Aesthetic
+ * 
+ * Colors:
+ *   Primary bg: #FAFBFC (cool white, faintest blue undertone)
+ *   Ink: #1A1A2E (charcoal ink — sharp, high contrast)
+ *   Accent: #5B6B7D (slate blue — restrained, intellectual, morning fog)
+ *   Pale stone: #F0EFED (barely-there section breaks)
+ *   Border: #E0E0E0 (thin manuscript rules)
+ *
+ * Typography:
+ *   Headlines: IBM Plex Serif
+ *   Body: IBM Plex Sans (20px min desktop, 18px min mobile)
+ *   Nav/Meta: IBM Plex Mono (uppercase, letter-spaced)
+ *
+ * Spacing:
+ *   100px+ between major sections
+ *   Line-height: 1.75 body
+ *   Max content: 660px articles
+ *   Paragraph spacing: 1.4em
+ */
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -40,86 +63,79 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Kalesh custom tokens */
+  --font-serif: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --color-ink: #1A1A2E;
+  --color-slate: #5B6B7D;
+  --color-paper: #FAFBFC;
+  --color-stone: #F0EFED;
+  --color-rule: #E0E0E0;
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
+  --radius: 0.25rem;
+  --background: oklch(0.985 0.002 250);
+  --foreground: oklch(0.17 0.02 275);
+  --card: oklch(0.985 0.002 250);
+  --card-foreground: oklch(0.17 0.02 275);
+  --popover: oklch(0.985 0.002 250);
+  --popover-foreground: oklch(0.17 0.02 275);
+  --primary: oklch(0.5 0.03 250);
+  --primary-foreground: oklch(0.985 0.002 250);
+  --secondary: oklch(0.95 0.003 80);
+  --secondary-foreground: oklch(0.17 0.02 275);
+  --muted: oklch(0.95 0.003 80);
+  --muted-foreground: oklch(0.5 0.03 250);
+  --accent: oklch(0.95 0.003 80);
+  --accent-foreground: oklch(0.17 0.02 275);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
-}
-
-.dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --border: oklch(0.9 0.003 80);
+  --input: oklch(0.9 0.003 80);
+  --ring: oklch(0.5 0.03 250);
+  --chart-1: oklch(0.5 0.03 250);
+  --chart-2: oklch(0.55 0.03 250);
+  --chart-3: oklch(0.6 0.03 250);
+  --chart-4: oklch(0.65 0.03 250);
+  --chart-5: oklch(0.7 0.03 250);
+  --sidebar: oklch(0.985 0.002 250);
+  --sidebar-foreground: oklch(0.17 0.02 275);
+  --sidebar-accent: oklch(0.95 0.003 80);
+  --sidebar-accent-foreground: oklch(0.17 0.02 275);
+  --sidebar-border: oklch(0.9 0.003 80);
+  --sidebar-ring: oklch(0.5 0.03 250);
+  --sidebar-primary: oklch(0.5 0.03 250);
+  --sidebar-primary-foreground: oklch(0.985 0.002 250);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #FAFBFC;
+    color: #1A1A2E;
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 20px;
+    }
+  }
+
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -131,28 +147,26 @@
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: #1A1A2E;
+    line-height: 1.2;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: rgba(91, 107, 125, 0.15);
+  }
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .flex {
@@ -162,16 +176,125 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
+      padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      max-width: 1100px;
     }
   }
+
+  /* Reading column — 660px max for articles */
+  .reading-column {
+    max-width: 660px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .reading-column {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Mono metadata text */
+  .meta-text {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5B6B7D;
+  }
+
+  /* Pull quote style */
+  .pull-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #1A1A2E;
+    border-left: 3px solid #5B6B7D;
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .pull-quote {
+      font-size: 24px;
+      margin: 3rem 0;
+    }
+  }
+
+  /* Thin manuscript rule */
+  .manuscript-rule {
+    border: none;
+    border-top: 1px solid #E0E0E0;
+    margin: 0;
+  }
+
+  /* Article body paragraph spacing */
+  .article-body p {
+    margin-bottom: 1.4em;
+  }
+
+  .article-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Link styles — underline on hover only */
+  .prose-link {
+    color: #1A1A2E;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .prose-link:hover {
+    border-bottom-color: #5B6B7D;
+  }
+
+  /* Nav link style */
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5B6B7D;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #1A1A2E;
+  }
+
+  /* Fade-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Staggered delays */
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .delay-600 { animation-delay: 0.6s; }
 }
